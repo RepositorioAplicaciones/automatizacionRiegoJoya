@@ -6,8 +6,7 @@
   </button>
   <input class="form-control form-control-dark w-100" type="text" placeholder="Buscar" aria-label="Search">  
   
-  
-  <!--Cerrar Sesión-->
+    <!--Cerrar Sesión-->
   <ul class="list-group background-color: #036">
     <li class="nav-item dropdown list-group-item-light">
       <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
