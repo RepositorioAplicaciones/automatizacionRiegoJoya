@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 //El modelo Zones es de Zonas
 
-class Worker extends Model
+class Zone extends Model
 {
     use HasFactory;
     protected $guarded = [];
@@ -16,11 +16,5 @@ class Worker extends Model
         return $this->hasMany('App\Models\Result');
     }
 
-    public function area(){
-        return $this->belongsTo('App\Models\Area');
-    }
-
-    public function roster(){
-        return $this->belongsTo('App\Models\Roster');
-    }
+   
 }
