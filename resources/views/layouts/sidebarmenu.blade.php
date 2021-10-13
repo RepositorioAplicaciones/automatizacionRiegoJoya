@@ -38,6 +38,13 @@
             Trabajadores
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/zones">
+            <span data-feather="activity"></span>
+            Zonas
+          </a>
+        </li>
+
       @endif 
       
       @if(Auth::user()->role_id < 3)
