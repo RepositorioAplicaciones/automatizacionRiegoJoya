@@ -40,7 +40,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/zones">
-            <span data-feather="activity"></span>
+            <span data-feather="globe"></span>
             Zonas
           </a>
         </li>

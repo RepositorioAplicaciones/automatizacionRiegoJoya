@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-//El modelo Workers es de trabajador
+//El modelo Zones es de Zonas
 
 class Worker extends Model
 {
