@@ -1,4 +1,4 @@
-<!--Crear un trabajador específico-->
+<!--Crear una zona específico-->
 @extends("layouts.template")
 
 @section("contenido") 

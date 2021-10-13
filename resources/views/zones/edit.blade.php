@@ -1,4 +1,4 @@
-<!--Editar un trabajador específico-->
+<!--Editar una zona específico-->
 @extends("layouts.template")
 
 @section("contenido") 

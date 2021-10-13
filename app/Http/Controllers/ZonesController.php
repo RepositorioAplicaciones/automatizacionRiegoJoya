@@ -66,7 +66,7 @@ class ZonesController extends Controller
     {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         $zonas = Zone::findOrFail($id);
-        return view("zonas.view", compact("zonas"));        
+        return view("zones.view", compact("zonas"));        
     }
 
     /**

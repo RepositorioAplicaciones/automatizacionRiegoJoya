@@ -1,4 +1,4 @@
-<!--Pantalla principal para los trabajadores-->
+<!--Pantalla principal para las zonas-->
 @extends("layouts.template")
 
 @section("contenido") 
