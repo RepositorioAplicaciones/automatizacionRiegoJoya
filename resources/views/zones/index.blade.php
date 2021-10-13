@@ -8,7 +8,7 @@
   @if(Auth::user()->role_id < 3)  
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">        
-        <a href="workers/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crear Zonas</a>
+        <a href="zones/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crear Zonas</a>
       </div>     
     </div>
   @endif
