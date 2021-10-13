@@ -47,7 +47,7 @@ Route::group(['middleware' => ['cors']], function () {
   Route::resource('workers', 'App\Http\Controllers\WorkersController');
   
   //Rutas crud zones
-  Route::resource('zones', 'App\Http\Controllers\WorkersController');
+  Route::resource('zones', 'App\Http\Controllers\ZonesController');
 
   //Rutas crud results
   Route::resource('workers/{id}/results', 'App\Http\Controllers\ResultsController');
