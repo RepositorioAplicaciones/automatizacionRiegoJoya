@@ -6,7 +6,7 @@
         <h1 class="h2">Editar Zona</h1>            
     </div>
   
-    {!! Form::model($trabajador, ['method' => 'PATCH', 'action' => ['App\Http\Controllers\WorkersController@update', $trabajador->id]]) !!}
+    {!! Form::model($zonas, ['method' => 'PATCH', 'action' => ['App\Http\Controllers\ZonesController@update', $zonas->id]]) !!}
         <table>
             <tr>
                 <td>{!! Form::label('name', 'Nombre') !!} </td>
