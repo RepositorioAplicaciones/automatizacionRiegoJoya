@@ -111,7 +111,8 @@ class ZonesController extends Controller
     {        
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         $zonas = Zone::findOrFail($id);
-        $zonas->results()->delete();
+        //$zonas->results()->delete();
         $zonas ->delete(); 
+        
     }
 }
