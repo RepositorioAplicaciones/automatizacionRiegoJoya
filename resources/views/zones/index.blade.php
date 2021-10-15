@@ -106,6 +106,7 @@
            data:data,
            success:function(data){
                window.location.reload();
+               alert('carga realizada exitosamente');
            }
         });
     });
