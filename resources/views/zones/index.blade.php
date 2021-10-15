@@ -15,6 +15,9 @@
       </div>
       <div class="btn-group mr-2">   
          <input type="file" onchange="readFile(this)">
+      </div>
+      <div class="btn-group mr-2">   
+        <button class="btn btn-success btn-info" aria-pressed="true">Descargar Resultado</button>
       </div>   
     </div>
   @endif
@@ -111,6 +114,31 @@
         });
     });
     
+    $(".btn-info").click(function(e){
+        e.preventDefault();
+        //var id = $("input[name=id]").val();         
+        var csrf = document.querySelector('meta[name="csrf-token"]').content;
+        /*var row = temp.split(',')
+        var data={
+          humedad1 : row[0],
+          temperatura1  : row[1],
+          humedad2 : row[2],
+          temperatura2  : row[3],
+          _token:csrf
+        };
+        $.ajax({
+           type:'POST',
+             url : "{{ route('zones.load') }}",
+           data:data,
+           success:function(data){
+               window.location.reload();
+               alert('carga realizada exitosamente');
+           }
+        });*/
+    });
+    
+
+
    function readFile(input) {       
         var file = input.files[0];
         var reader = new FileReader();
