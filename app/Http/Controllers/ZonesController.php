@@ -11,6 +11,7 @@ use \App\Models\Area;
 use \App\Models\Worker;
 use \App\Models\Result;
 use \App\Models\Zone;
+use Exception;
 
 //Controlador para la gestion de los Zonas
 
@@ -62,6 +63,8 @@ class ZonesController extends Controller
         
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
    
+        try
+        {
         $resultado = new Result;
         $resultado ->zone_id = 1;
         $resultado ->humedad = $request->humedad1;
@@ -75,10 +78,16 @@ class ZonesController extends Controller
         $resultado1 ->temperatura = $request->temperatura2;
         $resultado1 ->date = now();        
         $resultado1->save();
+        }
+        catch(Exception $e)
+        {
+            return $e;
 
-        //return $resultado;
+        }
+
+        return $resultado1;
           
-        return redirect("/zones"); 
+        //return redirect("/zones"); 
         
     }
     /**
