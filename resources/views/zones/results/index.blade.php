@@ -4,12 +4,12 @@
 @section("contenido")    
       
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">{{$trabajador->name}}</h1>
+    <h1 class="h2">{{$zonas->name}}</h1>
    
      @if(Auth::user()->role_id < 3)
       <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">  
-       <input type="hidden" name="id" class="form-control" value="{{$trabajador->id}}" required="">
+       <input type="hidden" name="id" class="form-control" value="{{$zonas->id}}" required="">
       </div>  
         <div class="btn-group mr-2">        
           <a href="results/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir Resultado</a>
@@ -35,8 +35,8 @@
       <thead>
         <tr>
           <th>Fecha</th>
+          <th>Humedad</th>
           <th>Temperatura</th>
-          <th>Saturación de Oxigeno</th>
           @if(Auth::user()->role_id < 3)
             <th>Opciones</th>
           @endif
@@ -46,12 +46,12 @@
       @foreach($results as $result)
         <tr>
           <td>{{$result->date}}</td>
-          <td>{{$result->temperature}}</td>
-          <td>{{$result->oxygen_saturation}}</td>
+          <td>{{$result->humedad}}</td>
+          <td>{{$result->temperatura}}</td>
           @if(Auth::user()->role_id < 3) 
             <td>
               <a href= "results/{{$result->id}}"> Ver </a> &nbsp;
-              <a href= "{{route('results.edit', [$trabajador -> id, $result -> id]) }}"> Editar </a> &nbsp;
+              <a href= "{{route('results.edit', [$zonas -> id, $result -> id]) }}"> Editar </a> &nbsp;
               <meta name="csrf-token" content="{{ csrf_token() }}">
               <a href="results/{{$result->id}}" data-method="delete" class="jquery-postback">Delete</a>
             </td>            

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use \App\Models\Worker;
 use \App\Models\Result;
-use \App\Models\Zones;
+use \App\Models\Zone;
     
 // controlador principal de resultados
 
@@ -22,9 +22,9 @@ class ResultsController extends Controller
     {           
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador','supervisor']);
              
-        $results = Result::where('worker_id', '=', $request->id)->orderBy('date', 'asc')->get();
-        $trabajador = Worker::find($request->id);
-        return view("workers.results.index", compact("results", "trabajador"));  
+        $results = Result::where('zone_id', '=', $request->id)->orderBy('date', 'asc')->get();
+        $zonas = Zone::find($request->id);
+        return view("zones.results.index", compact("results", "zonas"));  
        
     }
 
@@ -36,8 +36,8 @@ class ResultsController extends Controller
     public function create($id)
     {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
-        $trabajador = Worker::find($id);
-        return view('workers.results.create', compact("trabajador")); 
+        $zonas = Zone::find($id);
+        return view('zones.results.create', compact("zonas")); 
     }
 
     /**
@@ -50,14 +50,14 @@ class ResultsController extends Controller
     {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         $resultado = new Result;
-        $resultado ->worker_id = $request->worker_id;
-        $resultado ->oxygen_saturation = $request->oxygen_saturation;
-        $resultado ->temperature = $request->temperature;
+        $resultado ->zone_id = $request->zone_id;
+        $resultado ->humedad = $request->humedad;
+        $resultado ->temperatura = $request->temperatura;
         $resultado ->date = $request->date;        
         
         $resultado->save();
 
-        return redirect('/workers/'.$request->worker_id.'/results'); 
+        return redirect('/zones/'.$request->zone_id.'/results'); 
        
     }
    
@@ -68,14 +68,14 @@ class ResultsController extends Controller
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
    
         $resultado = new Result;
-        $resultado ->worker_id = $request->worker_id;
-        $resultado ->oxygen_saturation = $request->oxygen_saturation;
-        $resultado ->temperature = $request->temperature;
+        $resultado ->zone_id = $request->zone_id;
+        $resultado ->humedad = $request->humedad;
+        $resultado ->temperatura = $request->temperatura;
         $resultado ->date = now();        
         $resultado->save();
         //return $resultado;
-        $worker_id = $request->worker_id;         
-        return redirect('/workers/'.$worker_id.'/results'); 
+        $zone_id = $request->zone_id;         
+        return redirect('/zones/'.$zone_id.'/results'); 
         
     }
   
@@ -100,11 +100,11 @@ class ResultsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_worker, $id_result)
+    public function show($id_zone, $id_result)
     {        
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         $resultado = Result::findOrFail($id_result);        
-        return view("workers.results.view", compact("resultado"));  
+        return view("zones.results.view", compact("resultado"));  
     }
 
     /**
@@ -113,14 +113,14 @@ class ResultsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_worker, $id_result)
+    public function edit($id_zone, $id_result)
     {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         $resultado = Result::find($id_result);
         $resultado->date = str_replace(' ', 'T', $resultado->date);
         $resultado->date = substr($resultado->date, 0, strrpos($resultado->date, ':'));
                
-        return view("workers.results.edit", compact("resultado"));
+        return view("zones.results.edit", compact("resultado"));
     }
 
     /**
@@ -130,18 +130,18 @@ class ResultsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_worker, $id_result)
+    public function update(Request $request, $id_zone, $id_result)
     {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         $resultado = Result::findOrFail($id_result);
 
-        $resultado ->oxygen_saturation = $request->oxygen_saturation;
-        $resultado ->temperature = $request->temperature;
+        $resultado ->humedad = $request->humedad;
+        $resultado ->temperatura = $request->temperatura;
         $resultado ->date = $request->date;        
         
         $resultado->update();     
         
-        return redirect('/workers/'.$id_worker.'/results');         
+        return redirect('/zones/'.$id_zone.'/results');         
    
     }
 
