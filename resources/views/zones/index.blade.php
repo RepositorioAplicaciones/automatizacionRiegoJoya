@@ -97,7 +97,7 @@
           humedad1 : row[0],
           temperatura1  : row[1],
           humedad2 : row[2],
-          temperature2  : row[3],
+          temperatura2  : row[3],
           _token:csrf
         };
         $.ajax({
