@@ -50,7 +50,9 @@ Route::group(['middleware' => ['cors']], function () {
   Route::resource('zones', 'App\Http\Controllers\ZonesController');
 
   //Rutas crud results
-  Route::resource('workers/{id}/results', 'App\Http\Controllers\ResultsController');
+  Route::resource('zones/{id}/results', 'App\Http\Controllers\ResultsController');
+
+
   Route::post('workers/results/load', [ResultsController::class, 'load'])->name('results.load');
  
   
