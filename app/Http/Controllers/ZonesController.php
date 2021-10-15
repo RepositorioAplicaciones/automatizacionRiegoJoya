@@ -46,6 +46,7 @@ class ZonesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
@@ -55,7 +56,31 @@ class ZonesController extends Controller
         $zone->save();        
         return redirect("/zones");
     }
+    
+    public function load(Request $request)
+    {
+        
+        Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
+   
+        $resultado = new Result;
+        $resultado ->zone_id = 1;
+        $resultado ->humedad = $request->humedad1;
+        $resultado ->temperatura = $request->temperatura1;        
+        $resultado ->date = now();        
+        $resultado->save();
 
+        $resultado = new Result;
+        $resultado ->zone_id = 2;
+        $resultado ->humedad = $request->humedad2;
+        $resultado ->temperatura = $request->temperatura2;
+        $resultado ->date = now();        
+        $resultado->save();
+
+        //return $resultado;
+          
+        return redirect("/zones"); 
+        
+    }
     /**
      * Display the specified resource.
      *

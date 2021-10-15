@@ -9,7 +9,13 @@
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">        
         <a href="zones/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crear Zonas</a>
-      </div>     
+      </div>  
+      <div class="btn-group mr-2">   
+        <button class="btn btn-success btn-submit" aria-pressed="true">Cargar Resultado</button>
+      </div>
+      <div class="btn-group mr-2">   
+         <input type="file" onchange="readFile(this)">
+      </div>   
     </div>
   @endif
 </div>
@@ -53,7 +59,7 @@
   @endif   
 
   <script>
-    //funcion para borrar un trabajador
+    //funcion para borrar una zona
     $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -81,6 +87,42 @@
       }      
     });
     
+
+    $(".btn-submit").click(function(e){
+        e.preventDefault();
+        //var id = $("input[name=id]").val();         
+        var csrf = document.querySelector('meta[name="csrf-token"]').content;
+        var row = temp.split(',')
+        var data={
+          humedad1 : row[1],
+          temperatura1  : row[2],
+          humedad2 : row[3],
+          temperature2  : row[4],
+          _token:csrf
+        };
+        $.ajax({
+           type:'POST',
+             url : "{{ route('zones.load') }}",
+           data:data,
+           success:function(data){
+               window.location.reload();
+           }
+        });
+    });
+    
+   function readFile(input) {       
+        var file = input.files[0];
+        var reader = new FileReader();
+          reader.onload = function(){
+            temp = reader.result;
+            console.log(reader.result.substring(0, 200).split(','));
+        };
+          reader.onerror = function() {
+          console.log(reader.error);
+        };
+        reader.readAsText(input.files[0]);
+       
+       }
   </script>
 
 @endsection

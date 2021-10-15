@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResultsController;
+use App\Http\Controllers\ZonesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,6 @@ Route::group(['middleware' => ['cors']], function () {
 
   Route::post('workers/results/load', [ResultsController::class, 'load'])->name('results.load');
  
+  Route::post('zones/load', [ZonesController::class, 'load'])->name('zones.load'); 
   
 });
