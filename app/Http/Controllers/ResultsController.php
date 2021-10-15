@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use \App\Models\Worker;
 use \App\Models\Result;
+use \App\Models\Zones;
     
 // controlador principal de resultados
 
