@@ -4,7 +4,7 @@
 @section("contenido") 
 
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Resultados del Trabajador: {{$resultado->worker_id}}</h1>      
+    <h1 class="h2">Resultados del zona: {{$resultado->zone_id}}</h1>      
   </div>
    
     <table class="table" >      
@@ -14,16 +14,16 @@
           <td>{{$resultado->id}}</td>         
         </tr>
         <tr>
-          <th scope="row">Trabajador_ID</th>
-          <td> {{$resultado->worker_id}}</td>
+          <th scope="row">Zona_ID</th>
+          <td> {{$resultado->zone_id}}</td>
         </tr>
         <tr>
-          <th scope="row">Saturacion de Oxigeno</th>
-          <td> {{$resultado->oxygen_saturation}}</td>
+          <th scope="row">Humedad</th>
+          <td> {{$resultado->humedad}}</td>
         </tr>
         <tr>
           <th scope="row">Temperatura</th>
-          <td> {{$resultado->temperature}}</td>
+          <td> {{$resultado->temperatura}}</td>
         </tr>
         <tr>
           <th scope="row">Fecha</th>

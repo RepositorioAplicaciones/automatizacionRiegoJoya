@@ -1,4 +1,4 @@
-<!--Crear un resultado específico de un resultadod e un trabajador-->
+<!--Crear un resultado específico de un resultadod e un zona-->
 @extends("layouts.template")
 
 @section("contenido") 
