@@ -3,13 +3,13 @@
 
 @section("contenido") 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Añadir resultado a zonas {{$zonas->name}}</h1>           
+    <h1 class="h2">Añadir resultado  {{$zonas->name}}</h1>           
     </div>
 
     {!! Form::open(['method' => 'POST', 'url' => 'zones/'.$zonas->id.'/results']) !!}
         <table>
             <tr>
-                <td>{!! Form::label('zone_id', 'Trabajador ID') !!} </td>
+                <td>{!! Form::label('zone_id', 'Zona ID') !!} </td>
                 <td>{!! Form::text('zone_id', $zonas->id, ['class' => 'form-control', 'required', 'readonly']) !!} </td>
             </tr>
             

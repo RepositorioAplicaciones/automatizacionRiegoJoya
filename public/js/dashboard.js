@@ -6,7 +6,7 @@ window.onload = (function () {
   var resultados = appSettings;
   var array_dias = [];  
   var array_temperatura = [];
-  var array_sat_oxigeno = [];
+  var array_humedad = [];
   var days = 1;
 
   //document.getElementById("demo").innerHTML = "hhhh Hello JavaScript!" + resultados;
@@ -19,8 +19,8 @@ window.onload = (function () {
     var aux_dias = element.date;
     console.log(aux_dias);
     array_dias.push(aux_dias.substring(0,element.date.indexOf(" ")));
-    array_temperatura.push(element.temperature);
-    array_sat_oxigeno.push(element.oxygen_saturation);
+    array_temperatura.push(element.temperatura);
+    array_humedad.push(element.humedad);
     
   }); 
 
@@ -39,8 +39,8 @@ window.onload = (function () {
       labels: array_dias,
       datasets: [{
         //Eje Y
-        label: 'Saturacion de Oxígeno',
-        data: array_sat_oxigeno,
+        label: 'Humedad',
+        data: array_humedad,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
