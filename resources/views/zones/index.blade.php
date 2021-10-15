@@ -11,13 +11,13 @@
         <a href="zones/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Crear Zonas</a>
       </div>  
       <div class="btn-group mr-2">   
-        <button class="btn btn-success btn-submit" aria-pressed="true">Cargar Resultado</button>
+        <button class="btn btn-submit" aria-pressed="true">Cargar Resultado</button>
       </div>
       <div class="btn-group mr-2">   
          <input type="file" onchange="readFile(this)">
       </div>
       <div class="btn-group mr-2">   
-        <button class="btn btn-success btn-info" aria-pressed="true">Descargar Resultado</button>
+        <button class="btn btn-secondary" aria-pressed="true">Descargar Resultado</button>
       </div>   
     </div>
   @endif
@@ -114,7 +114,7 @@
         });
     });
     
-    $(".btn-info").click(function(e){
+    $(".btn-secondary").click(function(e){
         e.preventDefault();
         //var id = $("input[name=id]").val();         
         var csrf = document.querySelector('meta[name="csrf-token"]').content;
