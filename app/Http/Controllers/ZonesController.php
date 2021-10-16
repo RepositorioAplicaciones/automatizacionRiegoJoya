@@ -103,9 +103,14 @@ class ZonesController extends Controller
         $a = count((array)$zonas1);
         $b = count((array)$zonas2);
 
-        $humedad = Result::withAvg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
+        //$humedad = Result::withavg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
+
+        //$humedad = Result::select("zona_id")->withAvg('results', 'humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
+                        
+
+
         //$promedio = $humedad::withAvg('results','humedad') ->get();   
-        //$temperatura = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get();
+        $temperatura = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get();
         //$prom = 0;
 
         //foreach ($humedad as $result) {
@@ -127,7 +132,7 @@ class ZonesController extends Controller
         ];*/
     
         // make a response, with the content, a 200 response code and the headers
-        return  $humedad; //Response::make($content, 200, $headers);
+        return  $temperatura; //Response::make($content, 200, $headers);
 
         }
         catch(Exception $e)
