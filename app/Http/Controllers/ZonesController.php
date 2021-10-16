@@ -163,7 +163,7 @@ class ZonesController extends Controller
                 
         $result1 = $this->ObtenerPuntaje(1);
         $result2 = $this->ObtenerPuntaje(2);
-        $content .= 'A,'.$result1.',B,'.'20';
+        $content .= 'A,'.$result1.',B,'.$result2;
         $content .= "\n";
         
         $fileName = "zonas.txt";
