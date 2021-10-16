@@ -128,7 +128,7 @@
         };*/
         $.ajax({
            type:'GET',
-             url : "{{ route('zones.download') }}"
+             url : "{{ route('zones.download') }}",
            data: "",
            success:function(data){
                window.location.reload();
