@@ -102,7 +102,7 @@ class ZonesController extends Controller
         $content = "Logs \n";
         $a = count((array)$zonas1);
         $b = count((array)$zonas2);
-
+/*
        // foreach ($zonas1 as $zona) {
             
           $content.= $zonas1[$a-1]->humedad;
@@ -118,10 +118,10 @@ class ZonesController extends Controller
           'Content-type' => 'text/plain', 
           'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
           'Content-Length' => sizeof($content)
-        ];
+        ];*/
     
         // make a response, with the content, a 200 response code and the headers
-        return Response::make($content, 200, $headers);
+        return  $zonas1[$a-1]; //Response::make($content, 200, $headers);
 
         }
         catch(Exception $e)
