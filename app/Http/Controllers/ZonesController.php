@@ -12,7 +12,7 @@ use \App\Models\Worker;
 use \App\Models\Result;
 use \App\Models\Zone;
 use Exception;
-use App\Http\Controllers\Response;
+use Illuminate\Http\Response;
 use App\Http\Controllers\str;
 
 //Controlador para la gestion de los Zonas
@@ -144,8 +144,8 @@ class ZonesController extends Controller
     
         // make a response, with the content, a 200 response code and the headers
        // return  $valor; 
-        return Response::make($content, 200, $headers);
-        //return response()->download($pathToFile, $fileName,$headers)->deleteFileAfterSend();
+       // return Response::make($content, 200, $headers);
+        return Response::download($pathToFile, $fileName,$headers)->deleteFileAfterSend();
         //return response('hello world')->header('Content-Type', 'text/plain');
         }
         catch(Exception $e)
