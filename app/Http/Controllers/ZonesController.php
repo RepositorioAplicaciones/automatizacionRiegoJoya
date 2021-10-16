@@ -134,7 +134,7 @@ class ZonesController extends Controller
         $content .= "\n";
         // file name that will be used in the download
         $fileName = "zonas.txt";
-       // $file= public_path(). "/zonas.txt";
+        $file= "./public/uploads/zonas.txt";
     
         // use headers in order to generate the download
         $headers = [
@@ -145,8 +145,8 @@ class ZonesController extends Controller
     
         // make a response, with the content, a 200 response code and the headers
        // return  $valor; 
-        return Response::make($content, 200, $headers);
-        //return Response::download($file, $fileName,$headers)->deleteFileAfterSend();
+        //return Response::make($content, 200, $headers);
+        return Response::download($file, $fileName,$headers)->deleteFileAfterSend();
         //return response('hello world')->header('Content-Type', 'text/plain');
         }
         catch(Exception $e)
