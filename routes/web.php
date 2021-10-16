@@ -22,8 +22,8 @@ use App\Http\Controllers\ZonesController;
   Route::get('/exportResult', 'App\Http\Controllers\ReportController@exportResult')->name('exportResult');
   Route::get('exportResultForm/{id}', 'App\Http\Controllers\ReportController@exportResultForm');
   
-  Route::resource('/zones', 'App\Http\Controllers\ZonesController');
-   Route::get('/download', 'App\Http\Controllers\ReportController@download')->name('download');
+  //Route::resource('/zones', 'App\Http\Controllers\ZonesController');
+   //Route::get('/download', 'App\Http\Controllers\ReportController@download')->name('download');
   
 
 
@@ -65,7 +65,7 @@ Route::group(['middleware' => ['cors']], function () {
  
   Route::post('zones/load', [ZonesController::class, 'load'])->name('zones.load'); 
 
-  //Route::get('zones/download', [ZonesController::class, 'download'])->name('zones.download');
+  Route::get('zones/download', [ZonesController::class, 'download'])->name('download');
 
   
 });
