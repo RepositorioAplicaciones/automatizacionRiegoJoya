@@ -100,8 +100,7 @@ class ZonesController extends Controller
         $zonas1 = Zone::findOrFail(1); 
         $zonas2 = Zone::findOrFail(2); 
         $content = "Logs \n";
-        $a = count((array)$zonas1);
-        $b = count((array)$zonas2);
+       
 
         //$humedad = Result::withavg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
         $p = 0;
@@ -139,7 +138,8 @@ class ZonesController extends Controller
           //$content.= "\n";
         //}
      //   $valor =($prom/2);
-    /*
+        $content .= $valor;
+        $content .= "\n";
         // file name that will be used in the download
         $fileName = "zonas.txt";
     
@@ -148,10 +148,11 @@ class ZonesController extends Controller
           'Content-type' => 'text/plain', 
           'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
           'Content-Length' => sizeof($content)
-        ];*/
+        ];
     
         // make a response, with the content, a 200 response code and the headers
-        return  $valor; //Response::make($content, 200, $headers);
+        //return  $valor; 
+        Response::make($content, 200, $headers);
 
         }
         catch(Exception $e)
