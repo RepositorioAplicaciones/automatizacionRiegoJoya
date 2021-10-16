@@ -102,54 +102,37 @@ class ZonesController extends Controller
        
 
         //$humedad = Result::withavg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
-        $p = 0;
+        $p1 = 0;
+        $p2 = 0;
         $resultshum = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get(); 
+        $resultshum2 = Result::where('zone_id', '=', 2)->orderBy('id', 'desc')->take(2)->get(); 
          
-        foreach ($resultshum as $results) {
-            
-            // $prom = $prom +  $results->humedad;
-            
-           $p = $p + $results->humedad;
-           }
-           
-           
-          $valor = ($p)/2; 
+        foreach ($resultshum as $results) {           
+           $p1 = $p1 + $results->humedad;
+           }                      
+        $valor1 = ($p1)/2; 
 
-        //$humedad = Result::select("zona_id")->withAvg('results', 'humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
-                        
+        foreach ($resultshum2 as $results) {           
+            $p2 = $p2 + $results->humedad;
+            }                      
+        $valor2 = ($p2)/2;
 
-
-        //$promedio = $humedad::withAvg('results','humedad') ->get();   
-        //$temperatura = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get();
-        //$prom = 0;
-
-        //foreach ($humedad as $result) {
-            
-         // $prom = $prom +  $results->humedad;
-          //$content .= $zonas1[$a-2]->humedad;
-          //$content.= "\n";
-        //}
-     //   $valor =($prom/2);
-        //$content .= $valor;
-        $content .= $valor;
+        $content .= 'A,'.$valor1.',B,'.$valor2;
         $content .= "\n";
-        // file name that will be used in the download
+        
         $fileName = "zonas.txt";
         
         File::put(public_path('/uploads/'.$fileName),$content);
     
-        // use headers in order to generate the download
+        
         $headers = [
           'Content-type' => 'text/plain', 
           'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
           'Content-length'=>strlen($content)
         ];
     
-        // make a response, with the content, a 200 response code and the headers
-       // return  $valor; 
-        //return Response::make($content, 200, $headers);
+        
         return Response::download(public_path('/uploads/'.$fileName), $fileName,$headers);
-        //return response('hello world')->header('Content-Type', 'text/plain');
         }
         catch(Exception $e)
         {
