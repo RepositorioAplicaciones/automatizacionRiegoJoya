@@ -99,9 +99,9 @@ class ZonesController extends Controller
         {
         //$content .= "";
                 
-        $result1 = ObtenerPuntaje(1);
-        $result2 = ObtenerPuntaje(2);
-        $content .= 'A,'.$result1.',B,'.$result2;
+        //$result1 = ObtenerPuntaje(1);
+        //$result2 = ObtenerPuntaje(2);
+        $content .= 'A,'.'10'.',B,'.'20';
         $content .= "\n";
         
         $fileName = "zonas.txt";
