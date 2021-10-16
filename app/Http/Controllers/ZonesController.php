@@ -134,7 +134,7 @@ class ZonesController extends Controller
         $content .= "\n";
         // file name that will be used in the download
         $fileName = "zonas.txt";
-        $file= "./public/uploads/zonas.txt";
+        $file= "/uploads/zonas.txt";
     
         // use headers in order to generate the download
         $headers = [
