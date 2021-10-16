@@ -19,10 +19,7 @@
       <div class="btn-group mr-2">   
         <button class="btn btn-secondary" aria-pressed="true">Descargar Resultado</button>
       </div>
-      <div class="btn-group mr-2">        
-              
-        <a class="btn btn-danger" href="{{ route('zones.download') }}">Exportar txt</a>        
-    </div>   
+      
     </div>
   @endif
 </div>

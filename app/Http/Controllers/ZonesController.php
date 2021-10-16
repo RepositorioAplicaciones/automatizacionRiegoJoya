@@ -105,11 +105,13 @@ class ZonesController extends Controller
              $content .= $results->humedad;
              $content.= "\n";
            }
-         $fileName = "zonas.txt";
-         return Response::make($content,200,
+         $fileName = "\zonas.txt";
+         return strlen($content);
+         
+         /*Response::make($content,200,
          ['Content-type'=>'text/plain',
          'Content-Disposition'=>sprintf('attachment; filename="%s"', $fileName),
-         'Content-Length' => strlen($content)]); 
+         'Content-Length' => strlen($content)]); */
 
         }
         catch(Exception $e)
