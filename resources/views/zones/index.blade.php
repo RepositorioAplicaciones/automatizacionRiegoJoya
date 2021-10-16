@@ -21,7 +21,7 @@
       </div>
       <div class="btn-group mr-2">        
               
-        <a class="btn btn-danger" href="{{ route('download') }}">Exportar txt</a>        
+        <a class="btn btn-danger" href="{{ route('zones.download') }}">Exportar txt</a>        
     </div>   
     </div>
   @endif
