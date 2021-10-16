@@ -22,6 +22,11 @@ use App\Http\Controllers\ZonesController;
   Route::get('/exportResult', 'App\Http\Controllers\ReportController@exportResult')->name('exportResult');
   Route::get('exportResultForm/{id}', 'App\Http\Controllers\ReportController@exportResultForm');
   
+  Route::get('/zones/download', [ZonesController::class, 'getDownload'])->name('zones.download');
+
+
+
+
   //Rutas autenticacion
   Auth::routes();
   Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

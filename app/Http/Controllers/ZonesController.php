@@ -12,6 +12,7 @@ use \App\Models\Worker;
 use \App\Models\Result;
 use \App\Models\Zone;
 use Exception;
+use App\Http\Controllers\Response;
 
 //Controlador para la gestion de los Zonas
 
@@ -90,6 +91,45 @@ class ZonesController extends Controller
         //return redirect("/zones"); 
         
     }
+
+    public function getDownload(Request $request) {
+        try
+        {
+        // prepare content
+        $zonas1 = Zone::findOrFail(1); 
+        $zonas2 = Zone::findOrFail(2); 
+        $content = "Logs \n";
+        $a = count($zonas1); //10 -2
+        $b = count($zonas2); //10
+
+       // foreach ($zonas1 as $zona) {
+            
+          $content.= $zonas1[$a-1]->humedad;
+          //$content .= $zonas1[$a-2]->humedad;
+          $content.= "\n";
+       // }
+    
+        // file name that will be used in the download
+        $fileName = "zonas.txt";
+    
+        // use headers in order to generate the download
+        $headers = [
+          'Content-type' => 'text/plain', 
+          'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
+          'Content-Length' => sizeof($content)
+        ];
+    
+        // make a response, with the content, a 200 response code and the headers
+        return Response::make($content, 200, $headers);
+
+        }
+        catch(Exception $e)
+        {
+            return $e;
+        }
+    }
+
+
     /**
      * Display the specified resource.
      *

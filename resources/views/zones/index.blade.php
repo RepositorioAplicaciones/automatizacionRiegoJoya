@@ -125,14 +125,14 @@
           humedad2 : row[2],
           temperatura2  : row[3],
           _token:csrf
-        };
+        };*/
         $.ajax({
-           type:'POST',
-             url : "{{ route('zones.load') }}",
+           type:'GET',
+             url : "{{ route('zones.download') }}",
            data:data,
            success:function(data){
                window.location.reload();
-               alert('carga realizada exitosamente');
+               alert('descarga realizada exitosamente');
            }
         });*/
     });
