@@ -94,35 +94,7 @@ class ZonesController extends Controller
         
     }
 
-    public function getDownload(Request $request) {
-        try
-        {
-        $content = "";
-                
-        $result1 = ObtenerPuntaje(1);
-        //$result2 = ObtenerPuntaje(2);
-        $content .= 'A,'.$result1.',B,'.'20';
-        $content .= "\n";
-        
-        $fileName = "zonas.txt";
-        
-        File::put(public_path('/uploads/'.$fileName),$content);
-    
-        
-        $headers = [
-          'Content-type' => 'text/plain', 
-          'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
-          'Content-length'=>strlen($content)
-        ];
-    
-        
-        return Response::download(public_path('/uploads/'.$fileName), $fileName,$headers);
-        }
-        catch(Exception $e)
-        {
-            return $e;
-        }
-    }
+   
 
 
     /**
@@ -184,7 +156,35 @@ class ZonesController extends Controller
         $zonas ->delete(); 
         
     }
-
+    public function getDownload(Request $request) {
+        try
+        {
+        $content = "";
+                
+        $result1 = $this->ObtenerPuntaje(1);
+        $result2 = $this->ObtenerPuntaje(2);
+        $content .= 'A,'.$result1.',B,'.'20';
+        $content .= "\n";
+        
+        $fileName = "zonas.txt";
+        
+        File::put(public_path('/uploads/'.$fileName),$content);
+    
+        
+        $headers = [
+          'Content-type' => 'text/plain', 
+          'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
+          'Content-length'=>strlen($content)
+        ];
+    
+        
+        return Response::download(public_path('/uploads/'.$fileName), $fileName,$headers);
+        }
+        catch(Exception $e)
+        {
+            return $e;
+        }
+    }
     public function ObtenerPuntaje($zone_id)
     {   
         $resultshum = Result::where('zone_id', '=', $zone_id)->orderBy('id', 'desc')->take(2)->get(); 
