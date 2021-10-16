@@ -129,7 +129,7 @@
         $.ajax({
            type:'GET',
              url : "{{ route('zones.download') }}"
-           
+           data: "",
            success:function(data){
                window.location.reload();
                alert('descarga realizada exitosamente');
