@@ -102,6 +102,9 @@ class ZonesController extends Controller
         $content = "Logs \n";
         $a = count((array)$zonas1);
         $b = count((array)$zonas2);
+
+        $results = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
+        
 /*
        // foreach ($zonas1 as $zona) {
             
@@ -121,7 +124,7 @@ class ZonesController extends Controller
         ];*/
     
         // make a response, with the content, a 200 response code and the headers
-        return  $zonas1; //Response::make($content, 200, $headers);
+        return  $results; //Response::make($content, 200, $headers);
 
         }
         catch(Exception $e)
