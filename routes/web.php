@@ -63,7 +63,7 @@ Route::group(['middleware' => ['cors']], function () {
  
   Route::post('zones/load', [ZonesController::class, 'load'])->name('zones.load'); 
 
-  Route::get('zones', [ZonesController::class, 'download'])->name('zones.download');
+  Route::get('zones/download', [ZonesController::class, 'download'])->name('zones.download');
 
   
 });
