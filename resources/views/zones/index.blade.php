@@ -18,7 +18,11 @@
       </div>
       <div class="btn-group mr-2">   
         <button class="btn btn-secondary" aria-pressed="true">Descargar Resultado</button>
-      </div>   
+      </div>
+      <div class="btn-group mr-2">        
+        @csrf            
+        <a class="btn btn-danger" href="{{ route('download') }}">Exportar txt</a>        
+    </div>   
     </div>
   @endif
 </div>
@@ -116,16 +120,9 @@
     
     $(".btn-secondary").click(function(e){
         e.preventDefault();
-        //var id = $("input[name=id]").val();         
+          
         var csrf = document.querySelector('meta[name="csrf-token"]').content;
-        /*var row = temp.split(',')
-        var data={
-          humedad1 : row[0],
-          temperatura1  : row[1],
-          humedad2 : row[2],
-          temperatura2  : row[3],
-          _token:csrf
-        };*/
+       
         $.ajax({
            type:'GET',
              url : "{{ route('zones.download') }}",
