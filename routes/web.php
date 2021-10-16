@@ -21,7 +21,9 @@ use App\Http\Controllers\ZonesController;
   Route::get('/exportWorker', 'App\Http\Controllers\ReportController@exportWorker')->name('exportWorker');
   Route::get('/exportResult', 'App\Http\Controllers\ReportController@exportResult')->name('exportResult');
   Route::get('exportResultForm/{id}', 'App\Http\Controllers\ReportController@exportResultForm');
-  Route::get('/download', 'App\Http\Controllers\ReportController@download')->name('download');
+  
+  Route::resource('/zones', 'App\Http\Controllers\ZonesController');
+   Route::get('/download', 'App\Http\Controllers\ReportController@download')->name('download');
   
 
 
