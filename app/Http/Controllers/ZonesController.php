@@ -99,9 +99,9 @@ class ZonesController extends Controller
         {
         $content = "";
                 
-        //$result1 = ObtenerPuntaje(1);
+        $result1 = ObtenerPuntaje(1);
         //$result2 = ObtenerPuntaje(2);
-        $content .= 'A,'.'10'.',B,'.'20';
+        $content .= 'A,'.$result1.',B,'.'20';
         $content .= "\n";
         
         $fileName = "zonas.txt";
@@ -190,32 +190,33 @@ class ZonesController extends Controller
         $resultshum = Result::where('zone_id', '=', $zone_id)->orderBy('id', 'desc')->take(2)->get(); 
         
         $p1= 0; 
+        $result = 0;
         foreach ($resultshum as $results) {           
            $p1 = $p1 + $results->humedad;
            }                      
         $valor = ($p1)/2; 
-       if ($valor<20)
+       if ($valor<=20)
         {
-            $result = 60;
+            $result = '60';
         }else if ($valor>20 and $valor<=40)
         {
-            $result = 30;
+            $result = '30';
         }
         else if ($valor>40 and $valor<=60)
         {
-            $result = 15;
+            $result = '15';
         }
         else if ($valor>60 and $valor<=80)
         {
-            $result = 10;
+            $result = '10';
         }
         else if ($valor>80 and $valor<=90)
         {
-            $result = 5;
+            $result = '5';
         }
         else if ($valor>90)
         {
-            $result = 0;
+            $result = '0';
         }
         return $result;
     } 
