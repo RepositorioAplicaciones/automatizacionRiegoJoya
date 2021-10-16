@@ -96,65 +96,21 @@ class ZonesController extends Controller
     public function getDownload(Request $request) {
         try
         {
-        // prepare content
-        $zonas1 = Zone::findOrFail(1); 
-        $zonas2 = Zone::findOrFail(2); 
-        $content = "Logs \n";
        
-
-        //$humedad = Result::withavg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
+        $content = "Logs \n";
         $p = 0;
         $resultshum = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get(); 
-        $resultstem= Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get(); 
         foreach ($resultshum as $results) {
             
-            // $prom = $prom +  $results->humedad;
-             //$content .= $zonas1[$a-2]->humedad;
-             //$content.= "\n";
-           $p = $p + $results->humedad;
+             $content .= $results->humedad;
+             $content.= "\n";
            }
-           
-           foreach ($resultstem as $results) {
-            
-            // $prom = $prom +  $results->humedad;
-             //$content .= $zonas1[$a-2]->humedad;
-             //$content.= "\n";
-           $temp =  $results->temperatura;
-           }
-          $valor = ($p+$temp)/3; 
+         $fileName = "zonas.txt";
+         return Response::make($content,200,
+         ['Content-type'=>'text/plain',
+         'Content-Disposition'=>sprintf('attachment; filename="%s"', $fileName),
+         'Content-Length' => strlen($content)]); 
 
-        //$humedad = Result::select("zona_id")->withAvg('results', 'humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
-                        
-
-
-        //$promedio = $humedad::withAvg('results','humedad') ->get();   
-        //$temperatura = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get();
-        //$prom = 0;
-
-        //foreach ($humedad as $result) {
-            
-         // $prom = $prom +  $results->humedad;
-          //$content .= $zonas1[$a-2]->humedad;
-          //$content.= "\n";
-        //}
-     //   $valor =($prom/2);
-        //$content .= $valor;
-        
-        $content .= "\n";
-        // file name that will be used in the download
-        $fileName = "zonas.txt";
-    
-        // use headers in order to generate the download
-        $headers = [
-          'Content-type' => 'text/plain', 
-          'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName)
-        ];
-    
-        // make a response, with the content, a 200 response code and the headers
-        //return  $valor; 
-        //Response::make($content, 200, $headers);
-        //return response()->download($pathToFile, $fileName,$headers)->deleteFileAfterSend();
-        return response('hello world')->header('Content-Type', 'text/plain');
         }
         catch(Exception $e)
         {
