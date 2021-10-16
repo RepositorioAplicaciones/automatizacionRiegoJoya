@@ -134,7 +134,7 @@
                window.location.reload();
                alert('descarga realizada exitosamente');
            }
-        });*/
+        });
     });
     
 
