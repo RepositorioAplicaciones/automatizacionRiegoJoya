@@ -93,7 +93,7 @@ class ZonesController extends Controller
         
     }
 
-    public function download(Request $request) {
+    public function getdownload(Request $request) {
         try
         {
        
@@ -106,7 +106,7 @@ class ZonesController extends Controller
              $content.= "\n";
            }
          $fileName = "\zonas.txt";
-         return strlen($content);
+         return $request;
          
          /*Response::make($content,200,
          ['Content-type'=>'text/plain',
