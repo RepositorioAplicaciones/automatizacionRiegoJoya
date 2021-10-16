@@ -121,7 +121,7 @@ class ZonesController extends Controller
         ];*/
     
         // make a response, with the content, a 200 response code and the headers
-        return  $zonas1[$a-1]; //Response::make($content, 200, $headers);
+        return  $zonas1; //Response::make($content, 200, $headers);
 
         }
         catch(Exception $e)
