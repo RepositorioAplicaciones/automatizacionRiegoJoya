@@ -96,16 +96,14 @@ class ZonesController extends Controller
     public function getDownload(Request $request) {
         try
         {
-        // prepare content
-        $zonas1 = Zone::findOrFail(1); 
-        $zonas2 = Zone::findOrFail(2); 
+        
         $content = "Logs \n";
        
 
         //$humedad = Result::withavg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
         $p = 0;
         $resultshum = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get(); 
-        $resultstem= Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get(); 
+         
         foreach ($resultshum as $results) {
             
             // $prom = $prom +  $results->humedad;
@@ -114,14 +112,8 @@ class ZonesController extends Controller
            $p = $p + $results->humedad;
            }
            
-           foreach ($resultstem as $results) {
-            
-            // $prom = $prom +  $results->humedad;
-             //$content .= $zonas1[$a-2]->humedad;
-             //$content.= "\n";
-           $temp =  $results->temperatura;
-           }
-          $valor = ($p+$temp)/3; 
+           
+          $valor = ($p)/2; 
 
         //$humedad = Result::select("zona_id")->withAvg('results', 'humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
                         
