@@ -97,27 +97,11 @@ class ZonesController extends Controller
     public function getDownload(Request $request) {
         try
         {
-        
-        $content = "Logs \n";
-       
-
-        //$humedad = Result::withavg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
-        $p1 = 0;
-        $p2 = 0;
-        $resultshum = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get(); 
-        $resultshum2 = Result::where('zone_id', '=', 2)->orderBy('id', 'desc')->take(2)->get(); 
-         
-        foreach ($resultshum as $results) {           
-           $p1 = $p1 + $results->humedad;
-           }                      
-        $valor1 = ($p1)/2; 
-
-        foreach ($resultshum2 as $results) {           
-            $p2 = $p2 + $results->humedad;
-            }                      
-        $valor2 = ($p2)/2;
-
-        $content .= 'A,'.$valor1.',B,'.$valor2;
+        //$content .= "";
+                
+        $result1 = ObtenerPuntaje(1);
+        $result2 = ObtenerPuntaje(2);
+        $content .= 'A,'.$result1.',B,'.$result2;
         $content .= "\n";
         
         $fileName = "zonas.txt";
@@ -200,4 +184,39 @@ class ZonesController extends Controller
         $zonas ->delete(); 
         
     }
+
+    public function ObtenerPuntaje($zone_id)
+    {   
+        $resultshum = Result::where('zone_id', '=', $zone_id)->orderBy('id', 'desc')->take(2)->get(); 
+        
+        $p1= 0; 
+        foreach ($resultshum as $results) {           
+           $p1 = $p1 + $results->humedad;
+           }                      
+        $valor = ($p1)/2; 
+       if ($valor<20)
+        {
+            $result = 60;
+        }else if ($valor>20 and $valor<=40)
+        {
+            $result = 30;
+        }
+        else if ($valor>40 and $valor<=60)
+        {
+            $result = 15;
+        }
+        else if ($valor>60 and $valor<=80)
+        {
+            $result = 10;
+        }
+        else if ($valor>80 and $valor<=90)
+        {
+            $result = 5;
+        }
+        else if ($valor>90)
+        {
+            $result = 0;
+        }
+        return $result;
+    } 
 }
