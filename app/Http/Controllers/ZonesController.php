@@ -12,7 +12,7 @@ use \App\Models\Worker;
 use \App\Models\Result;
 use \App\Models\Zone;
 use Exception;
-use Illuminate\Http\Response;
+use Response;
 use App\Http\Controllers\str;
 
 //Controlador para la gestion de los Zonas
