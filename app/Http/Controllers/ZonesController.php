@@ -103,16 +103,19 @@ class ZonesController extends Controller
         $a = count((array)$zonas1);
         $b = count((array)$zonas2);
 
-        $results = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
-        
-/*
-       // foreach ($zonas1 as $zona) {
+        $humedad = Result::withAvg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
+        //$promedio = $humedad::withAvg('results','humedad') ->get();   
+        //$temperatura = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get();
+        //$prom = 0;
+
+        //foreach ($humedad as $result) {
             
-          $content.= $zonas1[$a-1]->humedad;
+         // $prom = $prom +  $results->humedad;
           //$content .= $zonas1[$a-2]->humedad;
-          $content.= "\n";
-       // }
-    
+          //$content.= "\n";
+        //}
+     //   $valor =($prom/2);
+    /*
         // file name that will be used in the download
         $fileName = "zonas.txt";
     
@@ -124,7 +127,7 @@ class ZonesController extends Controller
         ];*/
     
         // make a response, with the content, a 200 response code and the headers
-        return  $results; //Response::make($content, 200, $headers);
+        return  $humedad; //Response::make($content, 200, $headers);
 
         }
         catch(Exception $e)
