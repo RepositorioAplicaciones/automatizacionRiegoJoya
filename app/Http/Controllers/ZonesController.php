@@ -115,7 +115,14 @@ class ZonesController extends Controller
            $p = $p + $results->humedad;
            }
            
-          $valor = ($p)/3; 
+           foreach ($resultstem as $results) {
+            
+            // $prom = $prom +  $results->humedad;
+             //$content .= $zonas1[$a-2]->humedad;
+             //$content.= "\n";
+           $temp =  $results->temperatura;
+           }
+          $valor = ($p+$temp)/3; 
 
         //$humedad = Result::select("zona_id")->withAvg('results', 'humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
                         
@@ -144,7 +151,7 @@ class ZonesController extends Controller
         ];*/
     
         // make a response, with the content, a 200 response code and the headers
-        return  $resultstem; //Response::make($content, 200, $headers);
+        return  $valor; //Response::make($content, 200, $headers);
 
         }
         catch(Exception $e)
