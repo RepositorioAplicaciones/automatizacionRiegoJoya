@@ -93,7 +93,7 @@ class ZonesController extends Controller
         
     }
 
-    public function getDownload(Request $request) {
+    public function download(Request $request) {
         try
         {
        

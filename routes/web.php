@@ -22,7 +22,7 @@ use App\Http\Controllers\ZonesController;
   Route::get('/exportResult', 'App\Http\Controllers\ReportController@exportResult')->name('exportResult');
   Route::get('exportResultForm/{id}', 'App\Http\Controllers\ReportController@exportResultForm');
   
-  Route::get('/zones/download', [ZonesController::class, 'getDownload'])->name('zones.download');
+  Route::get('/zones/download', [ZonesController::class, 'download'])->name('zones.download');
 
 
 
