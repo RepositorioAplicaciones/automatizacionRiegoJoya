@@ -107,8 +107,7 @@ class ZonesController extends Controller
         foreach ($resultshum as $results) {
             
             // $prom = $prom +  $results->humedad;
-             //$content .= $zonas1[$a-2]->humedad;
-             //$content.= "\n";
+            
            $p = $p + $results->humedad;
            }
            
@@ -131,20 +130,21 @@ class ZonesController extends Controller
         //}
      //   $valor =($prom/2);
         //$content .= $valor;
-        
+        $content .= $valor;
         $content .= "\n";
         // file name that will be used in the download
-        $fileName = "zonas.txt";
+        $fileName = "\zonas.txt";
     
         // use headers in order to generate the download
         $headers = [
           'Content-type' => 'text/plain', 
-          'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName)
+          'Content-Disposition' => sprintf('attachment; filename="%s"', $fileName),
+          'Content-length'=>strlen($content)
         ];
     
         // make a response, with the content, a 200 response code and the headers
-        return  $valor; 
-        //Response::make($content, 200, $headers);
+       // return  $valor; 
+        return Response::make($content, 200, $headers);
         //return response()->download($pathToFile, $fileName,$headers)->deleteFileAfterSend();
         //return response('hello world')->header('Content-Type', 'text/plain');
         }
