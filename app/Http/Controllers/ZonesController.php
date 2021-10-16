@@ -106,7 +106,7 @@ class ZonesController extends Controller
         //$humedad = Result::withavg('results','humedad')->where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get();
         $p = 0;
         $resultshum = Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(2)->get(); 
-        $resultstem= Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get()->toArray(); 
+        $resultstem= Result::where('zone_id', '=', 1)->orderBy('id', 'desc')->take(1)->get(); 
         foreach ($resultshum as $results) {
             
             // $prom = $prom +  $results->humedad;
