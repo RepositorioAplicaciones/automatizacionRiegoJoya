@@ -13,6 +13,7 @@ use \App\Models\Result;
 use \App\Models\Zone;
 use Exception;
 use App\Http\Controllers\Response;
+use App\Http\Controllers\str;
 
 //Controlador para la gestion de los Zonas
 
@@ -99,8 +100,8 @@ class ZonesController extends Controller
         $zonas1 = Zone::findOrFail(1); 
         $zonas2 = Zone::findOrFail(2); 
         $content = "Logs \n";
-        $a = count($zonas1); //10 -2
-        $b = count($zonas2); //10
+        $a = count((array)$zonas1);
+        $b = count((array)$zonas2);
 
        // foreach ($zonas1 as $zona) {
             
