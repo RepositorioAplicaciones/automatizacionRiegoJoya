@@ -97,7 +97,7 @@ class ZonesController extends Controller
     public function getDownload(Request $request) {
         try
         {
-        //$content .= "";
+        $content = "";
                 
         //$result1 = ObtenerPuntaje(1);
         //$result2 = ObtenerPuntaje(2);
