@@ -139,7 +139,8 @@
         var reader = new FileReader();
           reader.onload = function(){
             temp = reader.result;
-            console.log(reader.result.substring(0, 200).split(','));
+
+            console.log(reader.result.substring(0, 200).split('\r\n'));
         };
           reader.onerror = function() {
           console.log(reader.error);

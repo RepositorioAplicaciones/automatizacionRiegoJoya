@@ -68,6 +68,7 @@ class ZonesController extends Controller
    
         try
         {
+
         $resultado = new Result;
         $resultado ->zone_id = 1;
         $resultado ->humedad = $request->humedad1;
