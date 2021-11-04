@@ -99,10 +99,10 @@
         var csrf = document.querySelector('meta[name="csrf-token"]').content;
         var row = temp.split('\r\n')
         var data={
-          humedad1 : row[0].substring(2,7),
-          temperatura1  : row[1].substring(2,7),
-          humedad2 : row[2].substring(2,7),
-          temperatura2  : row[3].substring(2,7),
+          humedad1 : row[0].substring(7,9),
+          temperatura1  : row[1].substring(7,9),
+          humedad2 : row[2].substring(7,9),
+          temperatura2  : row[3].substring(7,9),
           _token:csrf
         };
         $.ajax({
