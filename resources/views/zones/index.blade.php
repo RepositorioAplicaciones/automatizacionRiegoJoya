@@ -97,12 +97,12 @@
         e.preventDefault();
               
         var csrf = document.querySelector('meta[name="csrf-token"]').content;
-        var row = temp.split(',')
+        var row = temp.split('\r\n')
         var data={
-          humedad1 : row[0],
-          temperatura1  : row[1],
-          humedad2 : row[2],
-          temperatura2  : row[3],
+          humedad1 : row[0].substring(8,2),
+          temperatura1  : row[1].substring(8,2),
+          humedad2 : row[2].substring(8,2),
+          temperatura2  : row[3].substring(8,2),
           _token:csrf
         };
         $.ajax({
