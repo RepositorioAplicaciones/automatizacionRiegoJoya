@@ -14,12 +14,12 @@
         <div class="btn-group mr-2">        
           <a href="results/create" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Añadir Resultado</a>
         </div>   
-         <div class="btn-group mr-2">   
+        <!-- <div class="btn-group mr-2">   
           <button class="btn btn-success btn-submit" aria-pressed="true">Cargar Resultado</button>
         </div>
         <div class="btn-group mr-2">   
            <input type="file" onchange="readFile(this)">
-        </div>
+        </div>-->
        </div> 
        
     @endif
