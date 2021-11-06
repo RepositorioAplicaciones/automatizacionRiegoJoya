@@ -25,7 +25,7 @@
         <th scope="col">DNI</th>
         <th scope="col">Area</th>
         <th scope="col">Roster</th>
-        <th scope="col">Resultados</th>
+       
         @if(Auth::user()->role_id < 3)
           <th scope="col">Opciones</th>
         @endif          
