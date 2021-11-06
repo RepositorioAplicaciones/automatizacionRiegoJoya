@@ -55,9 +55,7 @@ class WorkersController extends Controller
         $worker ->age = $request->age;
         $worker ->sex = $request->sex;
         $worker ->DNI = $request->DNI;
-        $worker ->area_id = $request->area_id;
-        $worker ->fecha_subida  = now();
-        $worker ->fecha_bajada  = now();
+        $worker ->area_id = $request->area_id;        
         $worker ->roster_id = $request->roster_id;       
 
         $worker->save();        
