@@ -42,7 +42,7 @@
         <td>{{$trabajador->area->name}}</td>
         <td>{{$trabajador->roster->name}}</td>
         
-        <td><a href= "/workers/{{ $trabajador -> id }}/results"> resultado </a></td>
+        
         @if(Auth::user()->role_id < 3)
           <td>
             <a href= "{{route('workers.show', $trabajador -> id) }}"> Ver </a> &nbsp;

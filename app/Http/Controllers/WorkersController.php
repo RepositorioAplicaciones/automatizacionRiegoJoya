@@ -56,9 +56,7 @@ class WorkersController extends Controller
         $worker ->sex = $request->sex;
         $worker ->DNI = $request->DNI;
         $worker ->area_id = $request->area_id;
-        $worker ->roster_id = $request->roster_id;
-        $worker ->fecha_subida = $request->fecha_subida;
-        $worker ->fecha_bajada = $request->fecha_bajada;        
+        $worker ->roster_id = $request->roster_id;       
 
         $worker->save();        
 
@@ -111,8 +109,7 @@ class WorkersController extends Controller
         $trabajador ->DNI = $request->DNI;
         $trabajador ->area_id = $request->area_id;
         $trabajador ->roster_id = $request->roster_id;
-        $trabajador ->fecha_subida = $request->fecha_subida;
-        $trabajador ->fecha_bajada = $request->fecha_bajada;
+ 
         
         $trabajador->update();
       
