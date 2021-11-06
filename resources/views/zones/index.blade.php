@@ -98,11 +98,29 @@
               
         var csrf = document.querySelector('meta[name="csrf-token"]').content;
         var row = temp.split('\r\n')
-        var data={
-          humedad1 : row[0].substring(7,9),
-          temperatura1  : row[1].substring(7,9),
-          humedad2 : row[2].substring(7,9),
-          temperatura2  : row[3].substring(7,9),
+        var i = 0;
+        while (i<=row.length)
+        {
+
+          if (row[i] == "")
+          {
+            break;
+          
+          }
+          else{
+            getRequest(i);
+            i=i+2;          
+          }
+        }
+        
+    });
+    
+    function getRequest(i)
+    {
+      var data={
+          zone_id :    row[i].substring(4,5),
+          humedad : row[i].substring(7,9),
+          temperatura  : row[i+1].substring(7,9),         
           _token:csrf
         };
         $.ajax({
@@ -114,8 +132,9 @@
                alert('carga realizada exitosamente');
            }
         });
-    });
-    
+    }
+
+
     $(".btn-secondary").click(function(e){
         e.preventDefault();
              

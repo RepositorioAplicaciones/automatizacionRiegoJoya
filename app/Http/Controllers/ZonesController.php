@@ -70,18 +70,18 @@ class ZonesController extends Controller
         {
 
         $resultado = new Result;
-        $resultado ->zone_id = 1;
-        $resultado ->humedad = $request->humedad1;
-        $resultado ->temperatura = $request->temperatura1;        
+        $resultado ->zone_id = $request->zone_id;
+        $resultado ->humedad = $request->humedad;
+        $resultado ->temperatura = $request->temperatura;        
         $resultado ->date = now();        
         $resultado->save();
 
-        $resultado1 = new Result;
+        /*$resultado1 = new Result;
         $resultado1 ->zone_id = 2;
         $resultado1 ->humedad = $request->humedad2;
         $resultado1 ->temperatura = $request->temperatura2;
         $resultado1 ->date = now();        
-        $resultado1->save();
+        $resultado1->save();*/
         }
         catch(Exception $e)
         {
