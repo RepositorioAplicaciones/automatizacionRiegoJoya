@@ -109,22 +109,7 @@
           
           }
           else{
-            //getRequest(i);
-          var data={
-          zone_id :    row[i].substring(4,5),
-          humedad : row[i].substring(7,9),
-          temperatura  : row[i+1].substring(7,9),         
-          _token:csrf
-        };
-                $.ajax({
-                  type:'POST',
-                    url : "{{ route('zones.load') }}",
-                  data:data,
-                  success:function(data){
-                      window.location.reload();
-                      alert('carga realizada exitosamente');
-                  }
-                });
+            getRequest(i);         
             i=i+2;          
           }
         }
@@ -133,7 +118,21 @@
     
     function getRequest(i)
     {
-      
+      var data={
+          zone_id :    row[i].substring(4,5),
+          humedad : row[i].substring(7,9),
+          temperatura  : row[i+1].substring(7,9),         
+          _token:csrf
+        };
+                $.ajax({
+                  type:'POST',
+                  url : "{{ route('zones.load') }}",
+                  data:data,
+                  success:function(data){
+                      window.location.reload();
+                      alert('carga realizada exitosamente');
+                  }
+                });
       
     }
 
