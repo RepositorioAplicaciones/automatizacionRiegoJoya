@@ -25,8 +25,6 @@
         <th scope="col">DNI</th>
         <th scope="col">Area</th>
         <th scope="col">Roster</th>
-        <th scope="col">Fecha de Subida</th>
-        <th scope="col">Fecha de Bajada</th>
         <th scope="col">Resultados</th>
         @if(Auth::user()->role_id < 3)
           <th scope="col">Opciones</th>
@@ -43,8 +41,7 @@
         <td>{{$trabajador->DNI}}</td>
         <td>{{$trabajador->area->name}}</td>
         <td>{{$trabajador->roster->name}}</td>
-        <td>{{$trabajador->fecha_subida}}</td>
-        <td>{{$trabajador->fecha_bajada}}</td>
+        
         <td><a href= "/workers/{{ $trabajador -> id }}/results"> resultado </a></td>
         @if(Auth::user()->role_id < 3)
           <td>

@@ -38,16 +38,7 @@
                 <td>{!! Form::select('roster_id', $rosters, null, ['class' => 'form-control']) !!}</td>
             </tr>  
 
-            <tr>
-                <td>{!! Form::label('fecha_subida', 'Fecha de Subida') !!} </td>
-                <td>{!! Form::date('fecha_subida', null, ['class' => 'form-control', 'required']) !!} </td>
-            </tr>  
-
-            <tr>
-                <td>{!! Form::label('fecha_bajada', 'Fecha de Bajada') !!} </td>
-                <td>{!! Form::date('fecha_bajada', null, ['class' => 'form-control', 'required']) !!} </td>
-            </tr>            
-            
+           
             <tr>
                 <td >{!! Form::submit('Modificar Trabajador', ['class' => 'btn btn-primary' ]) !!} </td>
                 <td>{!! Form::reset('Restaurar', ['class' => 'btn btn-danger' ]) !!} </td>

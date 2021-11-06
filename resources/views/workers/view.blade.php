@@ -37,14 +37,7 @@
           <th scope="row">Roster</th>
           <td> {{$trabajador->roster->name}}</td>
         </tr> 
-        <tr>
-          <th scope="row">Fecha de Subida</th>
-          <td> {{$trabajador->fecha_subida}}</td>
-        </tr>  
-        <tr>
-          <th scope="row">Fecha de Bajada</th>
-          <td> {{$trabajador->fecha_bajada}}</td>
-        </tr>         
+                
       </tbody>
     </table>
 
