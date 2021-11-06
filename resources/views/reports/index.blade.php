@@ -13,10 +13,8 @@
         <div class="card-header">
           <h5 class = "h5">Exportar información de Resultados</h5>
           {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\ReportController@store']) !!}
-  
-        <div class="form-group row">
-        <label for="inputEmail3" class="col-sm-6 col-form-label">Zonas</label>
-        {!! Form::select('zone_id', $zonas, null, ['class' => 'form-control']) !!}
+          <div class="form-group row">
+          {!! Form::select('zone_id', $zonas, null, ['class' => 'form-control']) !!}
         </div>
         {!! Form::submit('Exportar', ['class' => 'btn btn-primary' ]) !!}    
         {!! Form::close() !!}
