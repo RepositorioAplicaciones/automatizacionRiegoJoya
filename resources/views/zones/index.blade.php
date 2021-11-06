@@ -97,7 +97,7 @@
     $(".btn-success").click(function(e){
         e.preventDefault();
               
-        
+        var csrf = document.querySelector('meta[name="csrf-token"]').content;
         row= temp.split('\r\n')
         var i = 0;
         while (i<=row.length)
@@ -109,7 +109,22 @@
           
           }
           else{
-            getRequest(i);
+            //getRequest(i);
+          var data={
+          zone_id :    row[i].substring(4,5),
+          humedad : row[i].substring(7,9),
+          temperatura  : row[i+1].substring(7,9),         
+          _token:csrf
+        };
+                $.ajax({
+                  type:'POST',
+                    url : "{{ route('zones.load') }}",
+                  data:data,
+                  success:function(data){
+                      window.location.reload();
+                      alert('carga realizada exitosamente');
+                  }
+                });
             i=i+2;          
           }
         }
@@ -118,22 +133,8 @@
     
     function getRequest(i)
     {
-      var csrf = document.querySelector('meta[name="csrf-token"]').content;
-      var data={
-          zone_id :    row[i].substring(4,5),
-          humedad : row[i].substring(7,9),
-          temperatura  : row[i+1].substring(7,9),         
-          _token:csrf
-        };
-        $.ajax({
-           type:'POST',
-             url : "{{ route('zones.load') }}",
-           data:data,
-           success:function(data){
-               window.location.reload();
-               alert('carga realizada exitosamente');
-           }
-        });
+      
+      
     }
 
 
