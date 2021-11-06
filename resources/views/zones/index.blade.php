@@ -113,7 +113,8 @@
             i=i+2;          
           }
         }
-        
+        window.location.reload();
+        alert('carga realizada exitosamente');
     });
     
     function getRequest(i)
@@ -130,8 +131,7 @@
                   url : "{{ route('zones.load') }}",
                   data:data,
                   success:function(data){
-                    window.location.reload();
-                      alert('carga realizada exitosamente');
+                   
                   }
                 });
       
