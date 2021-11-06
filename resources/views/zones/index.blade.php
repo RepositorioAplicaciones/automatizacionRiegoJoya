@@ -100,7 +100,7 @@
         
         row= temp.split('\r\n')
         var i = 0;
-        while (i<=row.length)
+        while (i<row.length)
         {
 
           if (row[i] == "")
