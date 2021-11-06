@@ -12,13 +12,13 @@
     <div class="card bg-light">
         <div class="card-header">
           <h5 class = "h5">Exportar información de Resultados</h5>
-        </div>
+       
         {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\ReportController@store']) !!}
   
     
     <div class="form-group row">
       <label for="inputEmail3" class="col-sm-2 col-form-label">Zonas</label>
-      {!! Form::select('id', $zonas, null, ['class' => 'form-control']) !!}
+      {!! Form::select('zone_id', $zonas, null, ['class' => 'form-control']) !!}
     </div>
 
     {!! Form::submit('Consultar', ['class' => 'btn btn-primary' ]) !!}    
@@ -29,6 +29,7 @@
             @csrf            
             <a class="btn btn-danger" href="{{ route('exportResult') }}">Exportar Información</a>        
         </div>
+      </div>
     </div>
   </div> 
 

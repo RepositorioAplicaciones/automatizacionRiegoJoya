@@ -53,31 +53,11 @@ class ReportController extends Controller
     {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         //QUERY PARA conseguir los datos del form del index de results                
-        $resultados = [];      
-        $trabajador = Worker::where('DNI', $request->DNI)->get();
-        if(count($trabajador)){ 
-            foreach ($trabajador[0]->results as $result){
-                if($request->tempRadio == "mayor" && $request->satOxiRadio == "mayor"){
-                    if($result->temperature >= $request->temperature && $result->oxygen_saturation >= $request->oxygen_saturation){
-                        array_push($resultados, $result);
-                    }
-                }elseif($request->tempRadio == "menor" && $request->satOxiRadio == "menor"){
-                    if($result->temperature <= $request->temperature && $result->oxygen_saturation <= $request->oxygen_saturation){
-                        array_push($resultados, $result);
-                    }
-                }elseif($request->tempRadio == "menor" && $request->satOxiRadio == "mayor"){
-                    if($result->temperature <= $request->temperature && $result->oxygen_saturation >= $request->oxygen_saturation){
-                        array_push($resultados, $result);
-                    }
-                }elseif($request->tempRadio == "mayor" && $request->satOxiRadio == "menor"){
-                    if($result->temperature >= $request->temperature && $result->oxygen_saturation <= $request->oxygen_saturation){
-                        array_push($resultados, $result);
-                    }
-                } 
-            }
-        }
         
-        return view("reports.index", compact("trabajador", "resultados", "request"));       
+        $resultados = Result::where('zone_id',$request->id)->get();
+        
+        
+        return view("reports.index", compact("resultados", "request"));       
     }
 
     /**
@@ -141,7 +121,11 @@ class ReportController extends Controller
     public function exportResultForm($request) 
     {       
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
-        $resultados = json_decode($request);               
-        return Excel::download((new ResultsExportForm($resultados)), 'resultado_trabajador.xlsx');       
+
+        //$resultados = json_decode($request);    
+        $result = Result::where('zone_id',$request->zone_id)->get();           
+        $resultados = json_decode($result);
+        return $request;
+        //return Excel::download((new ResultsExportForm($resultados)), 'resultado_trabajador.xlsx');       
     }
 }
