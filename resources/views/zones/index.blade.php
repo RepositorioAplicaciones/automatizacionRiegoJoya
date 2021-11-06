@@ -130,7 +130,7 @@
                   url : "{{ route('zones.load') }}",
                   data:data,
                   success:function(data){
-                      window.location.reload();
+                    window.location.reload();
                       alert('carga realizada exitosamente');
                   }
                 });

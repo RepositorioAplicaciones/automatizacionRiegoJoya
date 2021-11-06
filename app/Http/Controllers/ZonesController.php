@@ -69,12 +69,12 @@ class ZonesController extends Controller
         try
         {
 
-       /* $resultado = new Result;
+        $resultado = new Result;
         $resultado ->zone_id = $request->zone_id;
         $resultado ->humedad = $request->humedad;
         $resultado ->temperatura = $request->temperatura;        
         $resultado ->date = now();        
-        $resultado->save();*/
+        $resultado->save();
 
         
         }
@@ -84,9 +84,9 @@ class ZonesController extends Controller
 
         }
 
-        //return $resultado1;
+        return $resultado;
           
-        return $request; 
+        //return $request; 
         
     }
 
