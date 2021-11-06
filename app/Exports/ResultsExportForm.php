@@ -27,7 +27,7 @@ class ResultsExportForm implements FromCollection, WithHeadings
 
     public function headings(): array
     {
-        return ["id", "worker_id", "oxygen_saturation", "temperature", "date", "created_at", "updated_at", ];
+        return ["id", "zone_id", "humedad", "temperatura", "date", "created_at", "updated_at", ];
     }
     
 }

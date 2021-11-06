@@ -54,16 +54,11 @@ class ReportController extends Controller
         try
         {
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
-        //QUERY PARA conseguir los datos del form del index de results                
         
         $resultados = Result::where('zone_id',$request->zone_id)->get();
-        //return view("reports.index", compact("resultados", "request"));  
-        //$resultados = json_decode($result);
-        //return $resultados;
-        return Excel::download((new ResultsExportForm($resultados)), 'resultado_trabajador.xlsx');
+        return Excel::download((new ResultsExportForm($resultados)), 'resultado.xlsx');
         }
         catch(Exception $e)
-        
         {
         return $resultados;
         }
@@ -115,26 +110,6 @@ class ReportController extends Controller
     }
 
     
-    public function exportWorker() 
-    {
-        Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);      
-        return Excel::download(new WorkersExport, 'trabajadores.xlsx');
-    }
-
-    public function exportResult() 
-    {
-        Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);      
-        return Excel::download((new ResultsExport), 'resultados.xlsx');
-    }
-
-    public function exportResultForm($request) 
-    {       
-        Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
-
-        //$resultados = json_decode($request);    
-        $result = Result::where('zone_id',$request->zone_id)->get();           
-        $resultados = json_decode($result);
-        return $request;
-        //return Excel::download((new ResultsExportForm($resultados)), 'resultado_trabajador.xlsx');       
-    }
+   
+   
 }
