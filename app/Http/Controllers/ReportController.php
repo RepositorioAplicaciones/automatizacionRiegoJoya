@@ -59,10 +59,11 @@ class ReportController extends Controller
         $resultados = Result::where('zone_id',$request->zone_id)->get();
         //return view("reports.index", compact("resultados", "request"));  
         //$resultados = json_decode($result);
-        return $resultados;
+        //return $resultados;
+        return Excel::download((new ResultsExportForm($resultados)), 'resultado_trabajador.xlsx');
         }
         catch(Exception $e)
-        //return Excel::download((new ResultsExportForm($resultados)), 'resultado_zonas.xlsx');
+        
         {
         return $resultados;
         }
