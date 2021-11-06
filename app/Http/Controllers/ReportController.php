@@ -54,10 +54,12 @@ class ReportController extends Controller
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);
         //QUERY PARA conseguir los datos del form del index de results                
         
-        $resultados = Result::where('zone_id',$request->id)->get();
-        
-        
-        return view("reports.index", compact("resultados", "request"));       
+        $resultados = Result::where('zone_id',$request->zone_id)->get();
+        //return view("reports.index", compact("resultados", "request"));  
+        $resultados = json_decode($result);
+        //return $request;
+        return Excel::download((new ResultsExportForm($resultados)), 'resultado_zonas.xlsx');
+
     }
 
     /**
