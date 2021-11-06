@@ -97,7 +97,7 @@
     $(".btn-success").click(function(e){
         e.preventDefault();
               
-        var csrf = document.querySelector('meta[name="csrf-token"]').content;
+        
         row= temp.split('\r\n')
         var i = 0;
         while (i<=row.length)
@@ -118,6 +118,7 @@
     
     function getRequest(i)
     {
+      var csrf = document.querySelector('meta[name="csrf-token"]').content;
       var data={
           zone_id :    row[i].substring(4,5),
           humedad : row[i].substring(7,9),
