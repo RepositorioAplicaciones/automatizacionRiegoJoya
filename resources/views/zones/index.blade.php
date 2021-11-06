@@ -65,6 +65,7 @@
 
   <script>
     //funcion para borrar una zona
+    var row; 
     $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -97,7 +98,7 @@
         e.preventDefault();
               
         var csrf = document.querySelector('meta[name="csrf-token"]').content;
-        var row = temp.split('\r\n')
+        row= temp.split('\r\n')
         var i = 0;
         while (i<=row.length)
         {
