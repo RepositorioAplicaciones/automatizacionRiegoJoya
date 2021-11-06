@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Worker;
 use App\Models\Result;
+use App\Models\Zone;
 
 //Controlador para la gestion de los reportes y archivos
 
@@ -27,8 +28,9 @@ class ReportController extends Controller
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);   
         $trabajador = [];
         $resultados = [];
+        $zonas = Zone::pluck('name', 'id');
         $request = (object)['DNI' => 0, 'temperature' => 0, 'oxygen_saturation' => 0];   
-        return view("reports.index", compact("trabajador", "request", "resultados"));
+        return view("reports.index", compact("trabajador", "request", "resultados","zonas"));
     }
 
     /**

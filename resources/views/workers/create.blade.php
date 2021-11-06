@@ -3,7 +3,7 @@
 
 @section("contenido") 
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Crear Trabajador x</h1>           
+        <h1 class="h2">Crear Trabajador </h1>           
     </div>
   
     {!! Form::open(['method' => 'POST', 'action' => 'App\Http\Controllers\WorkersController@store']) !!}
