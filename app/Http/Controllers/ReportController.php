@@ -28,7 +28,7 @@ class ReportController extends Controller
         Auth::user()->authorizeRoles(['user', 'administrador', 'operador']);   
         $trabajador = [];
         $resultados = [];
-        $zonas = Zone::pluck('name', 'id');
+        $zonas = Zone::pluck('description', 'id');
         $request = (object)['DNI' => 0, 'temperature' => 0, 'oxygen_saturation' => 0];   
         return view("reports.index", compact("trabajador", "request", "resultados","zonas"));
     }
