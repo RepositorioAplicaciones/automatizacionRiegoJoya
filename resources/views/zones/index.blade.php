@@ -131,7 +131,7 @@
                   url : "{{ route('zones.load') }}",
                   data:data,
                   success:function(data){
-                   
+                   alert(data);
                   }
                 });
       
