@@ -113,8 +113,8 @@
             i=i+2;          
           }
         }
-        //window.location.reload();
-        //alert('carga realizada exitosamente');
+        window.location.reload();
+        alert('carga realizada exitosamente');
     });
     
     function getRequest(i)
