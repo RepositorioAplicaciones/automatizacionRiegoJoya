@@ -84,9 +84,9 @@ class ZonesController extends Controller
 
         }
 
-        return $resultado;
+        //return $resultado;
           
-        //return $request; 
+        return $request; 
         
     }
 
