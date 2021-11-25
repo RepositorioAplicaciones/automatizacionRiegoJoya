@@ -68,7 +68,8 @@ class ZonesController extends Controller
    
         try
         {
-        $zonas = Zone::where('name',$request->zone_id)->get();
+        $zonas = Zone::where('name',$request->zone_id)->first();
+        
         $resultado = new Result;
         $resultado ->zone_id =$zonas->id;
         $resultado ->humedad = $request->humedad;
